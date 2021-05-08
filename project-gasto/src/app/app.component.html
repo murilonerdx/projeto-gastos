@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Projeto gastos</title>
+    <link rel="icon" type="image/jpeg" sizes="500x500" href="../assets/img/tumblr_p2rhy86X3A1slofboo1_500.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
+    <header class="masthead" style="background: url('../assets/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);">
+        <div class="container h-100" style="width: 100vh;">
+            <div class="row h-100" style="filter: brightness(96%);height: 100vh;width: 100vh;">
+                <div class="col-lg-7 my-auto" style="height: 50%;width: 100%;">
+                    <div class="text-center mx-auto header-content" style="width: 500px;height: 228px;">
+                      <form [formGroup]="gastoSaveForm" #saveGasto (ngSubmit)="saveGastos(saveGasto)" >
+                        <h1 class="mb-5">Gerir gastos mensais</h1>
+                        <label class="form-label">VALOR DO GASTO&nbsp; &nbsp;</label>
+                        <input formControlName="valorGasto" class="border rounded-pill border-white shadow-none"  inputmode="numeric" style="background: rgba(255,255,255,0.32);text-align: center;color: rgb(0, 0, 0);font-family: Muli;border-width: 1px;border-style: groove;transform: translate(3px) scale(1.08);opacity: 0.78;filter: brightness(89%) contrast(114%);" placeholder="Valor inicial" minlength="10" required>
+                        <p></p><label class="form-label">DATA DO GASTO&nbsp; &nbsp; &nbsp;&nbsp;</label><input placeholder="dd/MM/yyyy" formControlName="dataGasto"  class="border rounded-pill border-white shadow-none" type="date" style="background: rgba(255,255,255,0.12);color: rgb(0,0,0);text-align: center;border-style: solid;filter: contrast(55%);" required>
+                        <button type="submit" class="btn btn-outline-warning btn-xl" (click)="refresh()">GERAR GASTOS</button>
+                      </form>
+                        
+                        
+                    </div>
+                    <div class="text-center"></div>
+                </div>
+            </div>
+            <div class="col">
+              <div class="table-responsive" style="height: 600px;">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th style="text-align: center;">ID</th>
+                              <th style="text-align: center;">Valor</th>
+                              <th style="text-align: center;">Data</th>
+                              <th style="text-align: center;">Gasto Total</th>
+                              <th style="text-align: center;">Quanto pode gastar ainda </th>
+                              <th style="text-align: center;">MÊS</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let gasto of gastos">
+                              <td class="table-active" style="text-align: center;">{{gasto.id}}</td>
+                              <td class="table-active" style="text-align: center;">{{gasto.valorGasto}}</td>
+                              <td class="table-active" style="text-align: center;">{{gasto.dataGasto}}</td>
+                              <td class="table-active" style="text-align: center;">{{gasto.financa.gastoTotal}}</td>
+                              <td class="table-active" style="text-align: center;">{{300 - gasto.financa.gastoTotal}}</td>
+                              <td class="table-active" style="text-align: center;">{{gasto.financa.month}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </header>
+</body>
+<script>
+  
+</script>
+</html>
